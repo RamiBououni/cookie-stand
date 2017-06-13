@@ -238,7 +238,7 @@ console.log(capitolHillCustomers);
 var capitolHillCookies = capitolHill.cookiesPurchased();
 console.log(capitolHillCookies);
 
-//array of number of cookies
+//array of total number of cookies
 
 var fourthLocation = [];
 
