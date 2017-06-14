@@ -26,6 +26,7 @@ SetStore.prototype.locationCookies = function() {
     this.cookies.push(this.cookiesPurchased())[i];
   }
 };
+
 // Creating stores
 
 var firstAndPike = new SetStore('First and Pike', 12, 45, 10);
@@ -99,15 +100,15 @@ for (var i = 0; i < 16; i++) {
 function render() {
   for (i = 0; i < storeNames.length; i++) {
     var sum = 0;
-    storeNames[i].locationCookies();//set up store names
-    //first olumn in the row
+    storeNames[i].locationCookies(); //set up store names
+    //first column in the row
     console.log(storeNames[i].cookies);
     row = document.createElement('tr');
     td = document.createElement('td');
     td.textContent = storeNames[i].name;
     row.appendChild(td);
     //rest of the column excluding the total
-    for(var j = 0; j < 14; j++){
+    for (var j = 0; j < 14; j++) {
       td = document.createElement('td');
       td.textContent = storeNames[i].cookies[j];
       sum += storeNames[i].cookies[j];
@@ -124,3 +125,20 @@ function render() {
 }
 
 render();
+
+// events
+
+var addStore = document.getElementById('storesForm');
+
+addStore.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var name = event.target.store.value;
+  var minHourlyCustomers = event.target.minHourlyCustomers.value;
+  var maxHourlyCustomers = event.target.maxHourlyCustomers.value;
+  var avgCookiesPerCustomer = event.target.avgCookiesPerCustomer.value;
+
+  var newStore = new SetStore(name, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
+  render();
+  addstore.reset();
+
+});
