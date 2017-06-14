@@ -90,11 +90,11 @@ SetStore.prototype.render = function render() {
 };
 
 // Render stores
-firstAndPike.render();
-seatacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
+// firstAndPike.render();
+// seatacAirport.render();
+// seattleCenter.render();
+// capitolHill.render();
+// alki.render();
 
 var storeNames = ['first And Pike', 'seatac Airport', 'seattle Center', 'capitol Hill', 'alki'];
 
@@ -105,27 +105,36 @@ parent = document.getElementById('firstLocation');
 var table = document.createElement('table');
 var row;
 var td;
+var obj = ''; // to set it to the emty table box at the begenning of the table
 
 //making the header row
-for(var i = 0; i < 16; i++){
-  var th = document.createElement('th');
-  td = document.createElement('td');
-  td.textContent = i + 6 + ' am';
-  th.appendChild(td);
-  table.appendChild(th);
-  parent.appendChild(table);
+for (var i = 0; i < 16; i++) {
+  if (i === 0) {
+    var th = document.createElement('th');
+    td = document.createElement('td');
+    td.textContent = obj;
+    th.appendChild(td);
+    table.appendChild(th);
+    parent.appendChild(table);
+  } else {
+    th = document.createElement('th');
+    td = document.createElement('td');
+    td.textContent = i + 6 + ' am';
+    th.appendChild(td);
+    table.appendChild(th);
+    parent.appendChild(table);
+  }
 }
-
 //making the left row for stores
-for(i = 0; i < 7; i++){
+for (i = 0; i < 5; i++) {
   row = document.createElement('tr');
   td = document.createElement('td');
   td.textContent = storeNames[i];
   row.appendChild(td);
   table.appendChild(row);
   parent.appendChild(table);
-  var columns = 16;
-  while(columns > 0){
+  var columns = 15;
+  while (columns > 0) {
     td = document.createElement('td');
     td.textContent = firstAndPike.cookiesPurchased();
     row.appendChild(td);
