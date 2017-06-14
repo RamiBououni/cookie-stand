@@ -96,7 +96,6 @@ for (var i = 0; i < 16; i++) {
   }
 }
 
-
 function render() {
   for (i = 0; i < storeNames.length; i++) {
     var sum = 0;
