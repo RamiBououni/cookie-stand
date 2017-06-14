@@ -7,27 +7,25 @@ function SetStore(name, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCus
   this.minHourlyCustomers = minHourlyCustomers;
   this.maxHourlyCustomers = maxHourlyCustomers;
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
+  this.cookies = [];
 }
 
 // to get the number of cookies purchased per hour
-SetStore.prototype.cookiesPurchased = function cookiesPurchased() {
+SetStore.prototype.cookiesPurchased = function() {
   return Math.floor(this.avgCookiesPerCustomer * this.customersPerHour());
 };
 
 //to get the number of customers per hour
-SetStore.prototype.customersPerHour = function customersPerHour() {
+SetStore.prototype.customersPerHour = function() {
   return (Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
 };
 
-
 // adding the TOTAL number of cookies to an array
-Location = [];
-SetStore.prototype.locationCookies = function locationCookies() {
+SetStore.prototype.locationCookies = function() {
   for (var i = 0; i < 15; i++) {
-    return Location.push(this.cookiesPurchased())[i];
+    this.cookies.push(this.cookiesPurchased())[i];
   }
 };
-
 // Creating stores
 
 var firstAndPike = new SetStore('First and Pike', 12, 45, 10);
@@ -36,24 +34,21 @@ var seattleCenter = new SetStore('Seattle Center', 23, 54, 36);
 var capitolHill = new SetStore('Capitol Hill', 9, 54, 36);
 var alki = new SetStore('Alki', 12, 41, 36);
 
-console.log(firstAndPike);
-console.log(seatacAirport);
-console.log(seattleCenter);
-console.log(capitolHill);
-console.log(alki);
-
-var storeNames = ['First And Pike', 'Seatac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
+var storeNames = [firstAndPike, seatacAirport, seattleCenter, capitolHill, alki];
 
 parent = document.getElementById('firstLocation');
 
 var table = document.createElement('table');
+
 table.style.border = 'solid';
 
 var row;
 var td;
 var obj = ''; // to set it to the emty table box at the begenning of the table
 
-//making the header row
+
+//making the header row for the time
+
 for (var i = 0; i < 16; i++) {
   if (i === 0) {
     var th = document.createElement('th');
@@ -100,25 +95,33 @@ for (var i = 0; i < 16; i++) {
     }
   }
 }
-//making the left row for store names
-for (i = 0; i < 5; i++) {
-  row = document.createElement('tr');
-  td = document.createElement('td');
-  td.textContent = storeNames[i];
-  td.style.textAlign = 'center';
-  row.appendChild(td);
-  table.appendChild(row);
-  parent.appendChild(table);
-//making the rest of the table
-  var columns = 15;
-  while (columns > 0) {
+
+
+function render() {
+  for (i = 0; i < storeNames.length; i++) {
+    var sum = 0;
+    storeNames[i].locationCookies();//set up store names
+    //first olumn in the row
+    console.log(storeNames[i].cookies);
+    row = document.createElement('tr');
     td = document.createElement('td');
-    td.style.border = 'solid';
-    td.style.textAlign = 'center';
-    td.textContent = firstAndPike.cookiesPurchased();
+    td.textContent = storeNames[i].name;
     row.appendChild(td);
+    //rest of the column excluding the total
+    for(var j = 0; j < 14; j++){
+      td = document.createElement('td');
+      td.textContent = storeNames[i].cookies[j];
+      sum += storeNames[i].cookies[j];
+      console.log(sum);
+      row.appendChild(td);
+    }
+    td = document.createElement('td');
+    td.textContent = sum;
+    row.appendChild(td);
+    console.log(sum);
     table.appendChild(row);
-    parent.appendChild(table);
-    columns--;
+
   }
 }
+
+render();
