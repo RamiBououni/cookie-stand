@@ -57,7 +57,7 @@ for (var i = 0; i < 16; i++) {
     table.appendChild(th);
     parent.appendChild(table);
   } else {
-    if (i < 7) {
+    if (i < 7) { // until 11 am
       th = document.createElement('th');
       td = document.createElement('td');
       td.textContent = i + 5 + ' am';
@@ -66,7 +66,7 @@ for (var i = 0; i < 16; i++) {
       table.appendChild(th);
       parent.appendChild(table);
     } else if (i > 7) {
-      if (i == 15) {
+      if (i == 15) { // for the last box in the table: Daily Location Total
         th = document.createElement('th');
         td = document.createElement('td');
         td.textContent = 'Daily Location Total';
@@ -74,7 +74,7 @@ for (var i = 0; i < 16; i++) {
         th.appendChild(td);
         table.appendChild(th);
         parent.appendChild(table);
-      } else {
+      } else { // for boxes from 1pm to 7pm
         th = document.createElement('th');
         td = document.createElement('td');
         td.textContent = i - 7 + ' pm';
@@ -83,7 +83,7 @@ for (var i = 0; i < 16; i++) {
         table.appendChild(th);
         parent.appendChild(table);
       }
-    } else {
+    } else { // for the box of 12 pm
       th = document.createElement('th');
       td = document.createElement('td');
       td.textContent = i + 5 + ' pm';
@@ -138,7 +138,7 @@ addStore.addEventListener('submit', function(event) {
   var avgCookiesPerCustomer = event.target.avgCookiesPerCustomer.value;
 
   var newStore = new SetStore(name, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
-
+//condition to not enter the same location twice
   if (stores.includes(name.toLowerCase())) {
     alert('This store is already in the database!');
   } else {
