@@ -46,7 +46,6 @@ var row;
 var td;
 var obj = ''; // to set it to the emty table box at the begenning of the table
 
-
 //making the header row for the time
 
 for (var i = 0; i < 16; i++) {
@@ -148,29 +147,4 @@ addStore.addEventListener('submit', function(event) {
     storeNames.push(newStore);
     render();
   }
-
-
-  //
-  // row = document.createElement('tr');
-  // td = document.createElement('td');
-  // td.textContent = newStore.name;
-  // row.appendChild(td);
-  // table.appendChild(row);
-  //
-  // newStore.locationCookies();
-  //
-  // var sum = 0;
-  //
-  // for (var j = 0; j < 14; j++) {
-  //   td = document.createElement('td');
-  //   td.textContent = newStore.cookies[j]; //adding the number of cookies frm the array
-  //   sum += newStore.cookies[j];
-  //   console.log(sum);
-  //   row.appendChild(td);
-  // }
-  // td = document.createElement('td');
-  // td.textContent = sum;
-  // row.appendChild(td);
-  // console.log(sum);
-  // table.appendChild(row);
 });
