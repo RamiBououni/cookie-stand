@@ -1,35 +1,160 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  background-image: url('https://farm4.staticflickr.com/3938/32764888973_688597f9b9_k.jpg');
+  background-image: url('https://wallpaperscraft.com/image/dark_light_spot_83503_2560x1080.jpg');
+  background-size: cover;
+  color: white;
+  width: 100%;
+  padding: 20px;
+  overflow-x: hidden; //to remove the horizontal scrollbar
+}
+
+.intro {
+  margin-top: 40px;
+}
+
+p {
+padding-right: 20px;
 }
 
 li {
   display: inline;
+  margin: 45px;
+  padding-left: 80px;
   font-size: 18px;
   font-family: sans-serif;
 }
-
+h1, h2, h4 {
+  color: #117691;
+}
 .navbar {
-  background-color: #5e6025;
-  background-color: transparent;
-  width: 100%;
-  margin-bottom: 50px;
+  background-color: rgba(184, 222, 235, 0.81) background-color: transparent;
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
 }
 
 footer {
-  background-color: #5e6025;
+  background-color: rgba(184, 222, 235, 0.81) ;
+  background-color: transparent;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
 }
+.hours{
+  color: white;
+}
+
 a {
-  color: black;
+  color: orange;
   transition: 0.7s;
 }
-a:hover{
+
+a:hover {
   color: white;
   transition: 0.7s;
+  transform: scale(0.9);
+}
+
+img {
+  height: 200px;
+  border-radius: 50px;
+  transition: 0.5s;
+ }
+
+ img:hover{
+   transition: 0.5s;
+   transform: scale(0.9);
+ }
+#contact {
+  color: white;
+  float: right;
+  position: relative;
+  font-weight: bold;
+  right: 150px;
+  bottom: 150px;
+}
+#time {
+  color: white;
+  font-weight: bold;
+}
+#storesForm {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+#firstLocation{
+  margin-top: 50px;
+}
+
+/*/////////////////////////////////////*/
+
+/*Creating my grid*/
+
+section {
+  box-sizing: border-box;
+}
+
+section::before, section::after {
+  content: "";
+  display: table;
+}
+
+section {
+  clear: both;
+}
+
+
+/*one column is 8.33% wide*/
+
+.col-1 {
+  width: 8.33%;
+}
+
+.col-2 {
+  width: 16.66%;
+}
+
+.col-3 {
+  width: 24.98%;
+}
+
+.col-4 {
+  width: 33.32%
+}
+
+.col-5 {
+  width: 41.65%
+}
+
+.col-6 {
+  width: 49.98%
+}
+
+.col-7 {
+  width: 58.3%
+}
+
+.col-8 {
+  width: 66.66%
+}
+
+.col-9 {
+  width: 74.97%
+}
+
+.col-10 {
+  width: 83.3%
+}
+
+.col-11 {
+  width: 91.66%
+}
+
+.col-12 {
+  width: 100%
 }

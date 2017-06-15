@@ -109,7 +109,7 @@ function render() {
     //rest of the columns excluding the total
     for (var j = 0; j < 14; j++) {
       td = document.createElement('td');
-      td.textContent = storeNames[i].cookies[j]; //adding the number of cookies frm the array
+      td.textContent = storeNames[i].cookies[j]; //adding the number of cookies from the array
       sum += storeNames[i].cookies[j];
       console.log(sum);
       row.appendChild(td);
@@ -119,7 +119,6 @@ function render() {
     row.appendChild(td);
     console.log(sum);
     table.appendChild(row);
-
   }
 }
 render();
