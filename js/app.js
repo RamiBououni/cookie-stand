@@ -26,7 +26,6 @@ SetStore.prototype.locationCookies = function() {
     this.cookies.push(this.cookiesPurchased())[i];
   }
 };
-
 // Creating stores
 
 var firstAndPike = new SetStore('First and Pike', 12, 45, 10);
@@ -101,16 +100,17 @@ function render() {
   for (i = 0; i < storeNames.length; i++) {
     var sum = 0;
     storeNames[i].locationCookies(); //set up store names
-    //first column in the row
-    console.log(storeNames[i].cookies);
+    //first column in the row: adding store name to the table
     row = document.createElement('tr');
     td = document.createElement('td');
     td.textContent = storeNames[i].name;
+    console.log('=============');
+    console.log(storeNames[i].name);
     row.appendChild(td);
-    //rest of the column excluding the total
+    //rest of the columns excluding the total
     for (var j = 0; j < 14; j++) {
       td = document.createElement('td');
-      td.textContent = storeNames[i].cookies[j];
+      td.textContent = storeNames[i].cookies[j]; //adding the number of cookies frm the array
       sum += storeNames[i].cookies[j];
       console.log(sum);
       row.appendChild(td);
@@ -123,14 +123,15 @@ function render() {
 
   }
 }
-
 render();
 
-// events
+var stores = ['first and pike', 'capitol hill', 'seattle center', 'seatac airport', 'alki'];
 
+// event
 var addStore = document.getElementById('storesForm');
 
 addStore.addEventListener('submit', function(event) {
+
   event.preventDefault();
   var name = event.target.store.value;
   var minHourlyCustomers = event.target.minHourlyCustomers.value;
@@ -138,7 +139,38 @@ addStore.addEventListener('submit', function(event) {
   var avgCookiesPerCustomer = event.target.avgCookiesPerCustomer.value;
 
   var newStore = new SetStore(name, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
-  render();
-  addstore.reset();
 
+  if (stores.includes(name.toLowerCase())) {
+    alert('This store is already in the database!');
+  } else {
+    storeNames = []; //make the array empty so it won't load the previous locations
+    stores.push(name);
+    storeNames.push(newStore);
+    render();
+  }
+
+
+  //
+  // row = document.createElement('tr');
+  // td = document.createElement('td');
+  // td.textContent = newStore.name;
+  // row.appendChild(td);
+  // table.appendChild(row);
+  //
+  // newStore.locationCookies();
+  //
+  // var sum = 0;
+  //
+  // for (var j = 0; j < 14; j++) {
+  //   td = document.createElement('td');
+  //   td.textContent = newStore.cookies[j]; //adding the number of cookies frm the array
+  //   sum += newStore.cookies[j];
+  //   console.log(sum);
+  //   row.appendChild(td);
+  // }
+  // td = document.createElement('td');
+  // td.textContent = sum;
+  // row.appendChild(td);
+  // console.log(sum);
+  // table.appendChild(row);
 });
