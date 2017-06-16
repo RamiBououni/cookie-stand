@@ -137,18 +137,26 @@ function tableFooter(){
   td.textContent = 'Total';
   row.appendChild(td);
   for(i = 0; i < 14; i++){
+    var totalVertical = 0;
     td = document.createElement('td');
-    td.textContent = 0;
+    for(var x = 0; x < storeNames.length; x++){
+      totalVertical += storeNames[x].cookies[i];
+      td.textContent = totalVertical;
+      console.log('777777777');
+      console.log(totalVertical);
+    }
     row.appendChild(td);
   }
   foot.appendChild(row);
   table.appendChild(foot);
 }
 tableFooter();
+/////////////////////////////////
+/////////////////////////////////
 
 var stores = ['first and pike', 'capitol hill', 'seattle center', 'seatac airport', 'alki'];
 
-// event
+// creating my event
 var addStore = document.getElementById('storesForm');
 
 addStore.addEventListener('submit', function(event) {
@@ -164,7 +172,7 @@ addStore.addEventListener('submit', function(event) {
   if (stores.includes(name.toLowerCase())) {
     alert('This store is already in the database!');
   } else {
-    storeNames = []; //make the array empty so it won't load the previous locations
+    storeNames = []; //make the array empty so it won't load the previous locations twice.
     stores.push(name);
     storeNames.push(newStore);
     render();
