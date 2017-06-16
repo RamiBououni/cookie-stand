@@ -28,11 +28,11 @@ SetStore.prototype.locationCookies = function() {
 };
 // Creating stores
 
-var firstAndPike = new SetStore('First and Pike', 12, 45, 10);
-var seatacAirport = new SetStore('Seatac Airport', 17, 33, 42);
-var seattleCenter = new SetStore('Seattle Center', 23, 54, 36);
-var capitolHill = new SetStore('Capitol Hill', 9, 54, 36);
-var alki = new SetStore('Alki', 12, 41, 36);
+var firstAndPike = new SetStore('First and Pike', 12, 6, 7);
+var seatacAirport = new SetStore('Seatac Airport', 11, 5, 9);
+var seattleCenter = new SetStore('Seattle Center', 15, 11, 3);
+var capitolHill = new SetStore('Capitol Hill', 9, 10, 7);
+var alki = new SetStore('Alki', 12, 14, 3);
 
 var storeNames = [firstAndPike, seatacAirport, seattleCenter, capitolHill, alki];
 
@@ -94,6 +94,25 @@ for (var i = 0; i < 16; i++) {
     }
   }
 }
+//create a table footer for the total.
+function tableFooter(){
+  var foot = document.createElement('tfoot');
+  row = document.createElement('tr');
+  td = document.createElement('td');
+  td.textContent = 'Total';
+  row.appendChild(td);
+  for(i = 0; i < 14; i++){
+    td = document.createElement('td');
+    td.textContent = 0;
+    row.appendChild(td);
+  }
+  foot.appendChild(row);
+  table.appendChild(foot);
+}
+tableFooter();
+
+// function render
+///////////////////////////////////////
 
 function render() {
   for (i = 0; i < storeNames.length; i++) {
