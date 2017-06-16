@@ -28,11 +28,11 @@ SetStore.prototype.locationCookies = function() {
 };
 // Creating stores
 
-var firstAndPike = new SetStore('First and Pike', 12, 45, 10);
-var seatacAirport = new SetStore('Seatac Airport', 17, 33, 42);
-var seattleCenter = new SetStore('Seattle Center', 23, 54, 36);
-var capitolHill = new SetStore('Capitol Hill', 9, 54, 36);
-var alki = new SetStore('Alki', 12, 41, 36);
+var firstAndPike = new SetStore('First and Pike', 12, 6, 7);
+var seatacAirport = new SetStore('Seatac Airport', 11, 5, 9);
+var seattleCenter = new SetStore('Seattle Center', 15, 11, 3);
+var capitolHill = new SetStore('Capitol Hill', 9, 10, 7);
+var alki = new SetStore('Alki', 12, 14, 3);
 
 var storeNames = [firstAndPike, seatacAirport, seattleCenter, capitolHill, alki];
 
@@ -95,6 +95,9 @@ for (var i = 0; i < 16; i++) {
   }
 }
 
+// function render
+///////////////////////////////////////
+
 function render() {
   for (i = 0; i < storeNames.length; i++) {
     var sum = 0;
@@ -126,9 +129,34 @@ function render() {
 }
 render();
 
+//create a table footer for the total.
+function tableFooter(){
+  var foot = document.createElement('tfoot');
+  row = document.createElement('tr');
+  td = document.createElement('td');
+  td.textContent = 'Total';
+  row.appendChild(td);
+  for(i = 0; i < 14; i++){
+    var totalVertical = 0;
+    td = document.createElement('td');
+    for(var x = 0; x < storeNames.length; x++){
+      totalVertical += storeNames[x].cookies[i];
+      td.textContent = totalVertical;
+      console.log('777777777');
+      console.log(totalVertical);
+    }
+    row.appendChild(td);
+  }
+  foot.appendChild(row);
+  table.appendChild(foot);
+}
+tableFooter();
+/////////////////////////////////
+/////////////////////////////////
+
 var stores = ['first and pike', 'capitol hill', 'seattle center', 'seatac airport', 'alki'];
 
-// event
+// creating my event
 var addStore = document.getElementById('storesForm');
 
 addStore.addEventListener('submit', function(event) {
@@ -144,7 +172,7 @@ addStore.addEventListener('submit', function(event) {
   if (stores.includes(name.toLowerCase())) {
     alert('This store is already in the database!');
   } else {
-    storeNames = []; //make the array empty so it won't load the previous locations
+    storeNames = []; //make the array empty so it won't load the previous locations twice.
     stores.push(name);
     storeNames.push(newStore);
     render();
