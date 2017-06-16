@@ -98,7 +98,9 @@ for (var i = 0; i < 16; i++) {
 function render() {
   for (i = 0; i < storeNames.length; i++) {
     var sum = 0;
-    storeNames[i].locationCookies(); //set up store names
+    storeNames[i].locationCookies(); //set up cookies total for each store.
+    console.log('8888888888');
+    console.log(firstAndPike.cookies);
     //first column in the row: adding store name to the table
     row = document.createElement('tr');
     td = document.createElement('td');
@@ -109,9 +111,10 @@ function render() {
     //rest of the columns excluding the total
     for (var j = 0; j < 14; j++) {
       td = document.createElement('td');
-      td.textContent = storeNames[i].cookies[j]; //adding the number of cookies frm the array
+      td.textContent = storeNames[i].cookies[j]; //adding the number of cookies from the array
       sum += storeNames[i].cookies[j];
       console.log(sum);
+      row.appendChild(td);
       row.appendChild(td);
     }
     td = document.createElement('td');
@@ -119,7 +122,6 @@ function render() {
     row.appendChild(td);
     console.log(sum);
     table.appendChild(row);
-
   }
 }
 render();
@@ -138,7 +140,7 @@ addStore.addEventListener('submit', function(event) {
   var avgCookiesPerCustomer = event.target.avgCookiesPerCustomer.value;
 
   var newStore = new SetStore(name, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer);
-//condition to not enter the same location twice
+  //condition to not enter the same location twice
   if (stores.includes(name.toLowerCase())) {
     alert('This store is already in the database!');
   } else {
