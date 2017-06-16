@@ -94,22 +94,6 @@ for (var i = 0; i < 16; i++) {
     }
   }
 }
-//create a table footer for the total.
-function tableFooter(){
-  var foot = document.createElement('tfoot');
-  row = document.createElement('tr');
-  td = document.createElement('td');
-  td.textContent = 'Total';
-  row.appendChild(td);
-  for(i = 0; i < 14; i++){
-    td = document.createElement('td');
-    td.textContent = 0;
-    row.appendChild(td);
-  }
-  foot.appendChild(row);
-  table.appendChild(foot);
-}
-tableFooter();
 
 // function render
 ///////////////////////////////////////
@@ -144,6 +128,23 @@ function render() {
   }
 }
 render();
+
+//create a table footer for the total.
+function tableFooter(){
+  var foot = document.createElement('tfoot');
+  row = document.createElement('tr');
+  td = document.createElement('td');
+  td.textContent = 'Total';
+  row.appendChild(td);
+  for(i = 0; i < 14; i++){
+    td = document.createElement('td');
+    td.textContent = 0;
+    row.appendChild(td);
+  }
+  foot.appendChild(row);
+  table.appendChild(foot);
+}
+tableFooter();
 
 var stores = ['first and pike', 'capitol hill', 'seattle center', 'seatac airport', 'alki'];
 
